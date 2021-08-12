@@ -18,37 +18,32 @@ time.sleep(1.75)
 while True:
 
     # creating a string variable called 'signal' to receive the communication from the ArduinoUno at COM3. 
-    signal = str(arduino_uno.readline()).split()
+    signal = str(arduino_uno.readline())
 
     '''
-
     The program will print the signals after the press of each button that is wired to the ArduinoUno.
     1. a keyword 'stop' can be printed, indicating to pause the music.
     2. a keyword 'back' can be printed, indicating to play the previous song after going back to the original.
     3. a keyword 'next' can be printed, indicating to play the next song that is after the current one playing.
-
     '''
     # printing the signal to the user via terminal.
     print(signal)
 
-    # creating a for-loop to iterate for the given signal by the buttons connected through the ArduinoUno.
-    for i in signal:
+    # creating an if-statement to check for the keywords being in the signal.
+    if 'stop' in signal:
 
-        # creating a nested if-statement to check for the keywords being in the signal.
-        if 'stop' in i:
+        # code to stop the music if the keyword 'stop' is detected through the outputted signal.
+        # using the PyAutoGui module's keyboard function called 'typewrite' to activate the space bar to stop the music in a time interval of 0.2 seconds.
+        pyautogui.typewrite(['space'], 0.2)
 
-            # code to stop the music if the keyword 'stop' is detected through the outputted signal.
-            # using the PyAutoGui module's keyboard function called 'typewrite' to activate the space bar to stop the music in a time interval of 0.2 seconds.
-            pyautogui.typewrite(['space'], 0.2)
+    elif 'back' in signal:
 
-        elif 'back' in i:
+        # code to play the previous song if the keyword 'back' is detected through the outputted signal.
+        # using the PyAutoGui module's keyboard function called 'hotkey' to activate the 'ctrl + left' input to play the previous song.
+        pyautogui.hotkey('ctrl', 'left')
 
-            # code to play the previous song if the keyword 'back' is detected through the outputted signal.
-            # using the PyAutoGui module's keyboard function called 'hotkey' to activate the 'ctrl + left' input to play the previous song.
-            pyautogui.hotkey('ctrl', 'left')
+    elif 'next' in signal:  
 
-        elif 'next' in i:  
-
-            # code to play the next song if the keyword 'next' is detected through the outputted signal.
-            # using the same PyAutoGui 'hotkey' function as before to activate the 'ctrl + right' input to play the upcoming/next song.
-            pyautogui.hotkey('ctrl', 'right')    
+        # code to play the next song if the keyword 'next' is detected through the outputted signal.
+        # using the same PyAutoGui 'hotkey' function as before to activate the 'ctrl + right' input to play the upcoming/next song.
+        pyautogui.hotkey('ctrl', 'right')
