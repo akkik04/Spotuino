@@ -3,6 +3,7 @@
 This project is simply made to demonstrate the functionality of the Arduino Uno with the Python language. The project controls the Spotify app using just 3 buttons that are wired to the Arduino Uno Rev3. The Arduino communicates a few keywords (i.e. pause, forward, and back) to the Python script through the COM3 port and uses PyAutoGui's functions to pause/play track, play the previous track, and play the next track. It also has a 1602 LCD hooked up to the Arduino board to let the user know about the pause, forward, and back commands.
 
 # Main Hardware Requirements:
+Along with the main components listed below, a solderless breadboard, jumper wires, and male/female jumper wires are required.
 ![Arduino-Spotify-Project Hardware Requirements](https://user-images.githubusercontent.com/81925146/129283181-aa8ddbe9-8979-4b79-9e00-d070d46cac18.png)
 
 # Important Documentations:
@@ -38,11 +39,3 @@ Below is a circuit diagram that shows all the connections for the project. It mi
 
 Below is a picture of the circuit. The picture shows the display of the buttons and the entire hardware. To view a detailed video of the project in action. Click [Watch Visual](https://github.com/akkik04/Arduino-Controlled-Spotify/blob/main/Project-Visuals/Updated-Visuals/ArduinoSpotifyProjectUpdatedVid.MOV).
 ![Arduino-Spotify-Project Hardware Requirements (2)](https://user-images.githubusercontent.com/81925146/129284092-69f1b06a-196a-4407-88b2-3cb3424de110.png)
-
-
-
-
-
-
-
-
