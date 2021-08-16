@@ -12,6 +12,8 @@ Along with the main components listed below, a solderless breadboard, jumper wir
 
 - **pySerial's Documentation:** I used this documentation to find out how I can receive access to the serial port. The pySerial module plays a very important role in my Python script because it does the central function of receiving the signal from the buttons wired to the Arduino Uno. For this project, the communication is done through the COM3 port. To view the pySerial module's documentation click [pySerial documentation](https://pyserial.readthedocs.io/en/latest/index.html).
 
+- **SwSpotify's Documentation:** I used this documentation to learn more about the functions that the SwSpotify module has to offer. This module is an add-on to my project because it gets the song and artist of the currently playing music from the Spotify application without using the actual API. After getting the current tune from the module's functions, the data is communicated to the Arduino Uno through the COM3 port and outputted through the 1602 LCD. To view the SwSpotify module's documentation click [SwSpotify documentation](https://pypi.org/project/SwSpotify/).
+
 # Circuit Model/Description:
 
 Below is a circuit diagram that shows all the connections for the project. It might be hard to see what the connections are, which is why I will write the main connections below. If you are familiar with the Arduino platform, you can head over to my [Arduino script](https://github.com/akkik04/Arduino-Controlled-Spotify/blob/main/Arduino-Controlled-Spotify/SpotifyController.ino) and view a few important connections listed through code.
@@ -37,5 +39,5 @@ Below is a circuit diagram that shows all the connections for the project. It mi
 
 # Project Visuals:
 
-Below is a picture of the circuit. The picture shows the display of the buttons and the entire hardware. To view a detailed video of the project in action. Click [Watch Visual](https://github.com/akkik04/Arduino-Controlled-Spotify/blob/main/Project-Visuals/Updated-Visuals/ArduinoSpotifyProjectUpdatedVid.MOV).
+Below is a picture of the circuit. The picture shows the display of the buttons and the entire hardware. To view the latest video of the project in action. Click [Watch Visual](https://github.com/akkik04/Arduino-Controlled-Spotify/blob/main/Project-Visuals/Updated-Visuals/ArduinoSpotifyVid.MOV).
 ![Arduino-Spotify-Project Hardware Requirements (2)](https://user-images.githubusercontent.com/81925146/129284092-69f1b06a-196a-4407-88b2-3cb3424de110.png)
