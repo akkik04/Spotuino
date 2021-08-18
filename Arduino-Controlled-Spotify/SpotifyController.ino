@@ -5,7 +5,6 @@
  * ARDUINO/C++ SCRIPT FOR THE ARDUINO CONTROLLED SPOTIFY PROJECT.
  * AKSHITH KANDIVANAM
  */
-
  
 // declaring the LCD pins.
 LiquidCrystal lcd(13, 8, 9, 10, 11, 12);
@@ -66,7 +65,7 @@ void loop() {
 
   // creating an if-statement to check if the centre button is pressed. 
   // checking that the current state is not equal to the previous state of each button, while making sure that the button's current state is LOW.
-  if((currentCentreState != prevCentreState)&&(currentCentreState == LOW)){
+  if ((currentCentreState != prevCentreState)&&(currentCentreState == LOW)) {
 
     // communicating the keyword 'stop' through the serial monitor, which will be read through the associated python script through COM3 and activate the specific PyAutoGui's functions to act on the Spotify.
     Serial.println("stop");
@@ -78,7 +77,7 @@ void loop() {
     
   }
   
-  else if(currentRightState == HIGH){
+  else if (currentRightState == HIGH) {
 
     // communicating the keyword 'next' through the serial monitor, which will be read through the associated python script through COM3 and activate the specific PyAutoGui's functions to act on the Spotify.
     Serial.println("next");
@@ -90,7 +89,7 @@ void loop() {
 
   }
   
-  else if(currentLeftState == HIGH){
+  else if (currentLeftState == HIGH) {
 
     // communicating the keyword 'back' through the serial monitor, which will be read through the associated python script through COM3 and activate the specific PyAutoGui's functions to act on the Spotify. 
     Serial.println("back");
@@ -105,6 +104,17 @@ void loop() {
   // code to tie the previous state of the centre button to its current state after each iteration of the main-loop.
   prevCentreState = currentCentreState;
 
+  // creating a for-loop to add the scrolling effect.
+  for (int counter = 0; counter < 16; counter++) {
+    
+    // scrolling one position to the right.
+    lcd.scrollDisplayRight();
+
+    // adding a delay to create an effect.
+    delay(150);
+  }
+
+  // clearing the lcd after each iteration of the main-loop.
   lcd.clear();
   
 }
