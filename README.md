@@ -39,5 +39,5 @@ Below is a circuit diagram that shows all the connections for the project. It mi
 
 # Project Visuals:
 
-Below is a picture of the circuit. The picture shows the display of the buttons and the entire hardware. To view the latest video of the project in action. Click [Watch Visual](https://github.com/akkik04/Arduino-Controlled-Spotify/blob/main/Project-Visuals/Updated-Visuals/ArduinoSpotifyVid.MOV).
+Below is a picture of the circuit. The picture shows the display of the buttons and the entire hardware. To view the latest video of the project in action. Click [Watch Visual](https://github.com/akkik04/Arduino-Controlled-Spotify/blob/main/Project-Visuals/Updated-Visuals/ArduinoSpotifyVidUpdated.MOV).
 ![Arduino-Spotify-Project Hardware Requirements (2)](https://user-images.githubusercontent.com/81925146/129284092-69f1b06a-196a-4407-88b2-3cb3424de110.png)
