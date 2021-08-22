@@ -16,8 +16,8 @@ arduino_uno = serial.Serial('com3', 9600)
 # creating a variable to store the old song that was playing. This variable is crucial for song detection.
 old_song = " "
 
-# creating a while-loop.
-while True:
+# created a function to store all the code for analyzing the button signal sent to the python script through the COM3 port.
+def analyze_signal():
 
     # creating a string variable called 'signal' to receive the communication from the ArduinoUno at COM3. 
     signal = str(arduino_uno.readline())
@@ -31,7 +31,7 @@ while True:
     # printing the signal to the user via terminal.
     print(signal)
 
-    # creating an if-statement to check for the keywords being in the signal.
+    # creating an if-statement to check for the keywords being in the signal sent from the Arduino.
     if 'stop' in signal:
 
         # code to stop the music if the keyword 'stop' is detected through the outputted signal.
@@ -59,6 +59,9 @@ while True:
         # time delay.
         time.sleep(0.2)
 
+# created a function to store all the code for sending the song name back to the Arduino Uno for display through the LCD. 
+def get_song(old_song):
+
     # creating a variable to continuously update the current song that is playing. This variable is crucial for song detection.
     current_song = spotify.song()
 
@@ -68,5 +71,14 @@ while True:
         # using the pySerial's 'write()' function to write the song name with encoding to the arduino through the COM3 port.
         arduino_uno.write(spotify.song().encode())
 
-    # code to tie/update the old song to the current song after the iteration.
+    # code to tie/update the old song to the current song.
     song_old = current_song
+
+# creating a while-loop.
+while True:
+
+    # calling the function to analyze the button signal from the Arduino.
+    analyze_signal()
+
+    # calling the function to get the song name from the SwSpotify module and send it to the Arudino for display.
+    get_song(old_song)
