@@ -1,39 +1,37 @@
-// including the LCD's library to use its functions.
-#include <LiquidCrystal.h>
-
 /*
  * ARDUINO/C++ SCRIPT FOR THE ARDUINO CONTROLLED SPOTIFY PROJECT.
  * AKSHITH KANDIVANAM
  */
- 
+
+// including the LCD's library to use its functions.
+#include <LiquidCrystal.h>
+
+// including the IR Remote library to use its functions.
+#include <IRremote.h>
+
 // declaring the LCD pins.
 LiquidCrystal lcd(13, 8, 9, 10, 11, 12);
+
+// declaring the IR receiever pin to 7.
+const int recv_pin = 7;
+
+// code to create a receiver object using the 'IRrecv' function.
+IRrecv irrecv(recv_pin);
+
+// code to create a results object using the 'decode_results' function.
+decode_results results;
+
+// creating a variable to store the key value.
+unsigned long key_value = 0;
 
 // creating a variable to store the song name that is sent from the python script through the COM3 port.
 String readSong = " ";
 
-// declaring variables to tie the left (previous song), centre (pause song), and right (next song) buttons to their respective pins.
-const int leftB = 2;
-const int centreB = 7;
-const int rightB = 4;
-
-// declaring variables to store the current state of each button, the state is either HIGH OR LOW.
-int currentLeftState = 0;
-int currentCentreState = 0;
-int currentRightState = 0;
-
-// declaring a variable to store the previous state of the centre button, once again, the state is either HIGH OR LOW.
-int prevCentreState = 0;
-
-
 // SETUP.
 void setup() {
 
-  // declaring each button as INPUT as it is supposed to tell the spotify app what to do (ex, STOP, NEXT, PREVIOUS).
-  pinMode(centreB, INPUT);
-  pinMode(leftB, INPUT);
-  pinMode(rightB, INPUT);
-
+  // code to enable the receiver that we created.
+  irrecv.enableIRIn();
 
   // initializing the LCD.
   lcd.begin(16, 2);
@@ -55,55 +53,64 @@ void loop() {
   lcd.setCursor(0, 1);
   lcd.print(readSong);
   delay(1100);
-  
 
-  // code to read the state of each button, which tells the program if the button is pressed.
-  currentLeftState = digitalRead(leftB);
-  currentCentreState = digitalRead(centreB);
-  currentRightState = digitalRead(rightB);
+  // creating an if-statement to decode the signal sent from the transmitter, which is the remote. We store the signal in the 'results' variable.
+  if (irrecv.decode(&results)){
 
+    // creating an if-statement to check if the value is equal to a hex value.
+    if (results.value == 0XFFFFFFFF)
 
-  // creating an if-statement to check if the centre button is pressed. 
-  // checking that the current state is not equal to the previous state of each button, while making sure that the button's current state is LOW.
-  if ((currentCentreState != prevCentreState)&&(currentCentreState == LOW)) {
+      // tying the result's value to the key value if the condition is met.
+      results.value = key_value;
 
-    // communicating the keyword 'stop' through the serial monitor, which will be read through the associated python script through COM3 and activate the specific PyAutoGui's functions to act on the Spotify.
-    Serial.println("stop");
+    // creating a switch to compare the value to multiple cases.
+    switch (results.value){
 
-    // code to print 'Paused' if the song is paused through the 1602 LCD.
-    lcd.setCursor(0,0);
-    lcd.print("Paused");
-    delay(250);
-    
+      // CASE: 1. If the value is equal to '0xFFE21D', it represents the pause button.
+      case 0xFFE21D:
+
+      // printing the keyword 'stop' to the serial monitor for recognition by the python script.
+      Serial.println("stop");
+      
+      // code to print 'Paused' if the song is paused through the 1602 LCD.
+      lcd.setCursor(0,0);
+      lcd.print("Paused");
+      delay(250);
+      break;
+
+      // CASE: 2. If the value is equal to '0xFF22DD', it represents the previous button.
+      case 0xFF22DD:
+
+      // printing the keyword 'back' to the serial monitor for recognition by the python script.
+      Serial.println("back");
+      
+      // code to print the 'Playing Previous:' if the song is backwarded through the 1602 LCD.
+      lcd.setCursor(0, 0);
+      lcd.print("Playing Previous:");
+      delay(250);
+      break;
+
+      // CASE: 3. If the value is equal to '0xFFC23D', it represents the forward button.
+      case 0xFFC23D:
+
+      // printing the keyword 'next' to the serial monitor for recognition by the python script.
+      Serial.println("next");
+      
+      // code to print 'Playing Next:' if the song is forwarded through the 1602 LCD.
+      lcd.setCursor(0, 0);
+      lcd.print("Playing Next:");
+      delay(250);
+      break ;
+      
+    }
+
+    // code to store the value as the key value after the switch.
+    key_value = results.value;
+
+    // code to allow the receiver resume for the next data sent through the transmitter.
+    irrecv.resume();
   }
   
-  else if (currentRightState == HIGH) {
-
-    // communicating the keyword 'next' through the serial monitor, which will be read through the associated python script through COM3 and activate the specific PyAutoGui's functions to act on the Spotify.
-    Serial.println("next");
-
-    // code to print 'Playing Next:' if the song is forwarded through the 1602 LCD.
-    lcd.setCursor(0, 0);
-    lcd.print("Playing Next:");
-    delay(250);
-
-  }
-  
-  else if (currentLeftState == HIGH) {
-
-    // communicating the keyword 'back' through the serial monitor, which will be read through the associated python script through COM3 and activate the specific PyAutoGui's functions to act on the Spotify. 
-    Serial.println("back");
-
-    // code to print the 'Playing Previous:' if the song is backwarded through the 1602 LCD.
-    lcd.setCursor(0, 0);
-    lcd.print("Playing Previous:");
-    delay(250);
-
-  }
-
-  // code to tie the previous state of the centre button to its current state after each iteration of the main-loop.
-  prevCentreState = currentCentreState;
-
   // creating a for-loop to add the scrolling effect.
   for (int counter = 0; counter < 16; counter++) {
     
