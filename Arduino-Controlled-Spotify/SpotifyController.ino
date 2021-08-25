@@ -101,7 +101,30 @@ void loop() {
       lcd.print("Playing Next:");
       delay(250);
       break ;
-      
+
+      // CASE: 4. If the value is equal to '0xFF629D', it represents the volume up button.
+      case 0xFF629D:
+
+      // printing the keyword 'up' to the serial monitor for recognition by the python script.
+      Serial.println("up");
+
+      // code to print 'Volume up' if the volume is brought up through the 1602 LCD.
+      lcd.setCursor(0, 0);
+      lcd.print("Volume up");
+      delay(50);
+      break;
+
+      // CASE: 5. If the value is equal to '0xFFA857', it represents the volume down button.
+      case 0xFFA857:
+
+      // printing the keyword 'down' to the serial monitor for recognition by the python script.
+      Serial.println("down");
+
+      // code to print 'Volume down' if the volume is brought up through the 1602 LCD.
+      lcd.setCursor(0, 0);
+      lcd.print("Volume down");
+      delay(50);
+      break;
     }
 
     // code to store the value as the key value after the switch.
