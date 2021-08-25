@@ -1,12 +1,12 @@
 # Spotuino (Controlling Spotify with Arduino)
 
-- This project is simply made to demonstrate the functionality of the Arduino Uno with the Python language. The project controls the Spotify app using just 3 buttons that are wired to the Arduino Uno Rev3. The Arduino communicates a few keywords (i.e. pause, forward, and back) to the Python script through the COM3 port and uses PyAutoGui's functions to pause/play track, play the previous track, and play the next track. It also has a 1602 LCD hooked up to the Arduino board to let the user know about the pause, forward, and back commands.
+- This project is simply made to demonstrate the functionality of the Arduino Uno with the Python language. The project controls the Spotify app using an IR remote and receiver. The Arduino communicates keywords (e.g. pause, forward, and back) based on the IR receiver back to the Python script through the COM3 port, which activates the PyAutoGui's functions. A 1602 LCD is used to display the song's status to the user.
 
 - The name of this project is 'Spotuino'. It is a combination of Spotify & Arduino.
 
 # Main Hardware Requirements:
 Along with the main components listed below, a solderless breadboard, jumper wires, and male/female jumper wires are required.
-![Arduino-Spotify-Project Hardware Requirements](https://user-images.githubusercontent.com/81925146/129283181-aa8ddbe9-8979-4b79-9e00-d070d46cac18.png)
+![Arduino Spotify Hardware Requirements](https://user-images.githubusercontent.com/81925146/130687263-7e03b568-043c-48af-99ae-c72797164afc.png)
 
 # Important Documentations:
 
@@ -34,12 +34,19 @@ Below is a circuit diagram that shows all the connections for the project. It mi
 - A pin to 5V or '+' row of breadboard.
 - K pin to GND or '-' row of breadboard.
 
+### IR Receiver Connections:
+- G pin to GND or '-' row of breadboard.
+- R pin to 5V or '+' row of breadboard.
+- Y pin to Digital Pin #7.
+
 ### General Connections:
 
-- The general connections are simple connections to the '+' and '-' rows of the breadboard, button connections with resistors attached, and the main Arduino connection to your laptop. If you want to become familiarized with the general connections of an Arduino Uno R3 board, I recommend viewing this [Arduino tutorial](https://www.arduino.cc/en/Tutorial/HomePage).
-![Arduino-Spotify-Project Circuit (5)](https://user-images.githubusercontent.com/81925146/129281072-5a3cbdbd-0472-4abd-b743-5753c15f4fde.png)
+- The general connections are simple connections to the '+' and '-' rows of the breadboard. If you want to become familiarized with the general connections of an Arduino Uno R3 board, I recommend viewing this [Arduino tutorial](https://www.arduino.cc/en/Tutorial/HomePage).
+![Arduino Spotify Circuit Picture](https://user-images.githubusercontent.com/81925146/130706677-0af51318-2e6b-4951-8271-53b583be8b2d.png)
+
 
 # Project Visuals:
 
-Below is a picture of the circuit. The picture shows the display of the buttons and the entire hardware. To view the latest video of the project in action. Click [Watch Visual](https://github.com/akkik04/Arduino-Controlled-Spotify/blob/main/Project-Visuals/Updated-Visuals/ArduinoSpotifyVidUpdated.MOV).
-![Arduino-Spotify-Project Hardware Requirements (2)](https://user-images.githubusercontent.com/81925146/129284092-69f1b06a-196a-4407-88b2-3cb3424de110.png)
+Below is a picture of the circuit. The picture shows the display of the IR receiver that is wired to the Arduino and the IR remote in my hand. A lot of the main hardware is also shown through this picture. To view the latest video of the project in action. Click [Watch Visual](https://github.com/akkik04/Spotuino/blob/main/Project-Visuals/Updated-Visuals/Latest%20Arduino%20Spotify%20Video.MOV).
+
+![Arduino Spotify Picture](https://user-images.githubusercontent.com/81925146/130685849-ff74278f-203d-4485-8f56-47ee03715de7.jpeg)
