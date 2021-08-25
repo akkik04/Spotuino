@@ -59,6 +59,19 @@ def analyze_signal():
         # time delay.
         time.sleep(0.2)
 
+    elif 'up' in signal:
+        
+        # code to bring the volume up if the keyword 'up' is detected through the outputted signal.
+        # using PyAutoGui 'press' function to activate the 'volume up' button.
+        pyautogui.press('volumeup')
+
+
+    elif 'down' in signal:
+        
+        # code to bring the volume down if the keyword 'down' is detected through the outputted signal.
+        # using PyAutoGui 'press' function to activate the 'volume down' button.
+        pyautogui.press('volumedown')
+
 # created a function to store all the code for sending the song name back to the Arduino Uno for display through the LCD. 
 def get_song(old_song):
 
