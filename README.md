@@ -52,6 +52,6 @@ Below is a circuit diagram that shows all the connections for the project. It mi
 
 # Project Visuals:
 
-Below is a picture of the circuit. The picture shows the display of the IR receiver that is wired to the Arduino and the IR remote in my hand. A lot of the main hardware is also shown through this picture. To view the latest video of the project in action. Click [Watch Visual](https://github.com/akkik04/Spotuino/blob/main/Project-Visuals/Updated-Visuals/Latest%20Arduino%20Spotify%20Video.MOV).
+Below is a picture of the circuit. The picture shows the display of the IR receiver that is wired to the Arduino and the IR remote in my hand. A lot of the main hardware is also shown through this picture. To view the latest video of the project in action. Click [Watch Visual](https://github.com/akkik04/Spotuino/blob/main/Project-Visuals/Updated-Visuals/Arduino%20Spotify%20Latest%20Video.MOV).
 
 ![Arduino Spotify Picture](https://user-images.githubusercontent.com/81925146/130685849-ff74278f-203d-4485-8f56-47ee03715de7.jpeg)
